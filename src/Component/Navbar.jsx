@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { HiX } from "react-icons/hi";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { FcSportsMode } from "react-icons/fc";
 const Navbar=()=>{
     const [open , isOpen]=useState(false)
@@ -43,19 +43,19 @@ const Navbar=()=>{
            {navLink}
            </div>
            <div className="md:flex md:justify-end  hidden">
-                <button className="btn text-white border-blue-400 bg-gradient-to-r from-cyan-500 to-blue-500 p-1">Join Us</button>
+                <Link to='/signIn'><button className="btn text-white border-blue-400 bg-gradient-to-r from-cyan-500 to-blue-500 p-1">Join Us</button></Link>
             </div>
            
         </div>
         {/* Mobile */}
         <div>
         {
-            open ?  <div  className=" drop-shadow-xl md:hidden text-green-800 hover:text-green-200 font-semibold absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-out hover:ease-in bg-green-400 shadow-xl md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0  md:items-center">
+            open ?  <div  className=" z-50 drop-shadow-xl md:hidden text-green-800 hover:text-green-200 font-semibold absolute inset-x-0  w-full px-6 py-4 transition-all duration-300 ease-out hover:ease-in bg-green-400 shadow-xl md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0  md:items-center">
               <div  >
               {navLink}
               </div>
               <div className="flex  justify-center">
-                <button className="mt-2 btn border-blue-400 p-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-xl text-white">Join Us</button>
+                <Link to='/signIn'><button className="mt-2 btn border-blue-400 p-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-xl text-white">Join Us</button> </Link>
             </div>
         </div> : ''
         }
