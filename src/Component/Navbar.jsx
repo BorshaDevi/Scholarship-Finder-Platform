@@ -55,7 +55,7 @@ const Navbar=()=>{
               {navLink}
               </div>
               <div className="flex  justify-center">
-                <button className="mt-2 btn border-blue-400 p-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-xl">Join Us</button>
+                <button className="mt-2 btn border-blue-400 p-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-xl text-white">Join Us</button>
             </div>
         </div> : ''
         }
