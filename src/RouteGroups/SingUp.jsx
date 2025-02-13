@@ -2,6 +2,7 @@ import {Link} from "react-router"
 import useAxiosPrivate from "../hooks/usePrivate"
 const SignUp=()=>{
     const axiosPrivate=useAxiosPrivate()
+    const navigation=useNavigate()
     const handleSignUp=async(e)=>{
         e.preventDefault()
         const form=e.target
@@ -31,6 +32,7 @@ const SignUp=()=>{
                             if(res.data.token){
                                 localStorage.setItem('token', res.data.token)
                                 form.reset()
+                                navigation('/')
                             }
                             
                         }).catch(err =>console.log(err))

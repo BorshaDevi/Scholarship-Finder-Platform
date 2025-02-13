@@ -1,7 +1,8 @@
-import {Link} from "react-router"
+import {Link, useNavigate} from "react-router"
 import useAxiosPrivate from "../hooks/usePrivate"
 const SignIn=()=>{
     const axiosPrivate=useAxiosPrivate()
+    const navigation=useNavigate()
     
     const handleSignIn=async(e)=>{
         e.preventDefault()
@@ -21,6 +22,7 @@ const SignIn=()=>{
                     if(res.data.token){
                         localStorage.setItem('token', res.data.token)
                         form.reset()
+                        navigation('/')
                     }
                     
                 }).catch(err =>console.log(err))
