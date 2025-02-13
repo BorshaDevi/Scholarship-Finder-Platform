@@ -1,4 +1,4 @@
-import {Link} from "react-router"
+import {Link, useNavigate} from "react-router"
 import useAxiosPrivate from "../hooks/usePrivate"
 const SignUp=()=>{
     const axiosPrivate=useAxiosPrivate()
@@ -15,7 +15,7 @@ const SignUp=()=>{
             password,
             role:'user'
         }
-        console.log(allUser)
+        
         const signup=await axiosPrivate.post('/users',allUser)
          .then(res =>{
             if(res.data){
@@ -23,7 +23,7 @@ const SignUp=()=>{
                     email,
                     password
                 }
-                console.log(login)
+                
                 const loginUser= axiosPrivate.post('/loginUser',login)
                 .then(res =>{
                     if(res.data.insertedId){

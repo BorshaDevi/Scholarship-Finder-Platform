@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router";
 import { FcSportsMode } from "react-icons/fc";
 const Navbar=()=>{
     const [open , isOpen]=useState(false)
+    const tokenValue=localStorage.getItem("token")
     const navLink=(
         <div className="flex flex-col text-xl md:flex-row md:mx-6 md:gap-4">
             <NavLink to='/' className={({isActive}) =>[
@@ -42,9 +43,27 @@ const Navbar=()=>{
            <div className="hidden md:flex ">
            {navLink}
            </div>
-           <div className="md:flex md:justify-end  hidden">
+           {
+                tokenValue?
+                <div className="avatar md:flex md:justify-end  hidden">
+  <div className="ring-success ring-offset-base-100 w-8 rounded-full ring ring-offset-2">
+    <span className=" bg-slate-200 rounded-full p-4  text-center">
+    </span>
+  </div>
+</div>
+  
+  
+  : 
+  
+  <div className="md:flex md:justify-end  hidden">
                 <Link to='/signIn'><button className="btn text-white border-blue-400 bg-gradient-to-r from-cyan-500 to-blue-500 p-1">Join Us</button></Link>
             </div>
+
+              }
+
+
+
+           
            
         </div>
         {/* Mobile */}
@@ -54,9 +73,17 @@ const Navbar=()=>{
               <div  >
               {navLink}
               </div>
-              <div className="flex  justify-center">
+
+              {
+                tokenValue?
+                <p>user data</p> : 
+  
+  <div className="flex  justify-center">
                 <Link to='/signIn'><button className="mt-2 btn border-blue-400 p-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-xl text-white">Join Us</button> </Link>
             </div>
+
+              }
+              
         </div> : ''
         }
         </div>
