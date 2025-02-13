@@ -30,7 +30,6 @@ const SignUp=()=>{
                         .then(res=>{
                             if(res.data.token){
                                 localStorage.setItem('token', res.data.token)
-                                localStorage.setItem('user',email)
                                 form.reset()
                             }
                             
