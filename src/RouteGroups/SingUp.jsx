@@ -11,11 +11,12 @@ const SignUp=()=>{
         const allUser={
             name,
             email,
-            password
+            password,
+            role:'user'
         }
         console.log(allUser)
         const signup=await axiosPrivate.post('/users',allUser)
-         .then(res =>console.log(res))
+         .then(res =>console.log(res.data))
          .catch(err => console.log(err))
 
     }
