@@ -16,7 +16,31 @@ const SignUp=()=>{
         }
         console.log(allUser)
         const signup=await axiosPrivate.post('/users',allUser)
-         .then(res =>console.log(res.data))
+         .then(res =>{
+            if(res.data){
+                const login={
+                    email,
+                    password
+                }
+                console.log(login)
+                const loginUser= axiosPrivate.post('/loginUser',login)
+                .then(res =>{
+                    if(res.data.insertedId){
+                        axiosPrivate.post('/jwt',{email:email})
+                        .then(res=>{
+                            if(res.data.token){
+                                localStorage.setItem('token', res.data.token)
+                                localStorage.setItem('user',email)
+                                form.reset()
+                            }
+                            
+                        }).catch(err =>console.log(err))
+                    }
+                })
+                .catch(err => console.log(err))
+            }
+            }
+        )
          .catch(err => console.log(err))
 
     }

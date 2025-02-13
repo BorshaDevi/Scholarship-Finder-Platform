@@ -15,7 +15,17 @@ const SignIn=()=>{
         console.log(login)
         const loginUser=await axiosPrivate.post('/loginUser',login)
         .then(res =>{
-            console.log(res.data)
+            if(res.data.insertedId){
+                axiosPrivate.post('/jwt',{email:email})
+                .then(res=>{
+                    if(res.data.token){
+                        localStorage.setItem('token', res.data.token)
+                        localStorage.setItem('user',email)
+                        form.reset()
+                    }
+                    
+                }).catch(err =>console.log(err))
+            }
         })
         .catch(err => console.log(err))
     }
