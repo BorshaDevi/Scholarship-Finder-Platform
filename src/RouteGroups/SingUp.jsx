@@ -1,15 +1,31 @@
 import {Link} from "react-router"
+import useAxiosPrivate from "../hooks/usePrivate"
 const SignUp=()=>{
-    const handleSignUp=(e)=>{
+    const axiosPrivate=useAxiosPrivate()
+    const handleSignUp=async(e)=>{
         e.preventDefault()
+        const form=e.target
+        const name=form.name.value;
+        const email=form.email.value;
+        const password=form.password.value;
+        const allUser={
+            name,
+            email,
+            password
+        }
+        console.log(allUser)
+        const signup=await axiosPrivate.post('/users',allUser)
+         .then(res =>console.log(res))
+         .catch(err => console.log(err))
+
     }
     return(
         <>
        <div className=' mt-10  lg:mx-auto md:ml-64 mb-24 md:h-auto lg:container drop-shadow-2xl shadow-white  bg-green-300    md:w-80 md:p-5 '>
         <form onSubmit={handleSignUp} >
-              <input type="text" name='name' required className='w-full border border-black mt-5 p-1' placeholder='Enter your Email'></input>
+              <input type="text" name='name' required className='w-full border border-black mt-5 p-1' placeholder='Enter your Name'></input>
               <br />
-              <input type="email" name='email' required className='w-full border border-black mt-5 p-1' placeholder='Enter your Name'></input>
+              <input type="email" name='email' required className='w-full border border-black mt-5 p-1' placeholder='Enter your email'></input>
               <br />
               <input type="password" name="password" required className='w-full border border-black p-1 mt-5' placeholder='Enter your password'  ></input>
               <br />
