@@ -45,8 +45,12 @@ const Navbar=()=>{
            </div>
            {
                 tokenValue?
-                <div className="avatar md:flex md:justify-end  hidden">
-  <div className="ring-success ring-offset-base-100 w-8 rounded-full ring ring-offset-2">
+                <div className="avatar md:flex md:justify-end dropdown hidden">
+  <div tabIndex={0} role="button" className="ring-success ring-offset-base-100  m-1 w-8 rounded-full ring ring-offset-2">
+  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box mt-10 z-10 w-52 p-2 shadow">
+    <li>Dashboard</li>
+    <li>Log out</li>
+  </ul>
     <span className=" bg-slate-200 rounded-full p-4  text-center">
     </span>
   </div>
@@ -76,7 +80,12 @@ const Navbar=()=>{
 
               {
                 tokenValue?
-                <p>user data</p> : 
+                <div className="text-xl">
+                    <ul>
+                        <li>Dashboard</li>
+                        <li>Log Out</li>
+                    </ul>
+                </div> : 
   
   <div className="flex  justify-center">
                 <Link to='/signIn'><button className="mt-2 btn border-blue-400 p-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-xl text-white">Join Us</button> </Link>
